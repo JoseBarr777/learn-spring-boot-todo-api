@@ -6,11 +6,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 
 
-// DTO for creating a new Todo item
-// Jackson is used for JSON serialization/deserialization
-// Jackarta Bean Validation annotations are used for input validation
-// Records are immutable data carriers introduced in Java 14. THey provide a concise syntax for declaring classes which are transparent holders for shallowly immutable data.
-// not marked as a bean with @Component or @Service because it's just a data carrier, not a service or component in the application context.
+
+/**
+ * Request object for creating a new Todo item.
+ *
+ * This is a record (immutable data carrier) that is used for requests
+ * because the data shouldn’t change once it comes in.
+ *
+ * - Validation annotations (@NotBlank, @Size) make sure the title is present
+ *   and not too long.
+ * - @JsonFormat tells Jackson how to handle the date when converting to/from JSON.
+ *
+ * Note: This isn’t marked as a Spring bean (@Component, @Service, etc.)
+ * since it’s just a simple data holder, not part of the application context.
+ */
 public record CreateTodoRequest(
   @NotBlank 
   @Size(max = 200)

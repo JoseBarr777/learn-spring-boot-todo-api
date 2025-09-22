@@ -4,14 +4,22 @@ import com.example.tasksmanager.todo.domain.Todo;
 import com.example.tasksmanager.todo.dto.TodoResponse;
 
 
+
+/**
+ * Converts between domain objects and DTOs.
+ *
+ * Right now it only maps a Todo entity -> TodoResponse,
+ * since creation and updates are handled by request DTOs
+ * CreateTodoRequest and UpdateTodoRequest.
+ */
 public final class TodoMapper {
 
-    // private constructor to prevent instantiation (utility class)
-    // this means that this class is not meant to be instantiated, as it only contains static methods.
+    // Prevent instantiation because this is a utility class.
     private TodoMapper() {}
 
-    // Maps a Todo entity to a TodoResponse DTO. 
-    // We dont't need to map in the other direction because we use CreateTodoRequest for that purpose.
+    /**
+     * Turn a Todo entity into a TodoResponse for the API layer.
+     */
     public static TodoResponse toResponse(Todo t) {
         return new TodoResponse(
             t.getId(),
