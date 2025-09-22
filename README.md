@@ -1,4 +1,4 @@
-# Learn Spring Boot Todo API
+# Learn Spring Boot Todo API (AKA Todo API)
 
 A simple **Spring Boot** REST API for a Todo service, following a **layered architecture** (Controller → Service → Repository) with **DTOs**, **validation**, and an **H2** in-memory database.
 
